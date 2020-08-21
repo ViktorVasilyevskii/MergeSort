@@ -1,0 +1,30 @@
+private static int[] Merge(int[] A, int p, int q, int r){
+
+        int[] A1 = new int[q - p + 1];
+        int[] A2 = new int[r - q];
+
+        for(int i = 0; i <= (q - p); i++){
+            A1[i] = array[i];
+        }
+        for(int i = 0; i < (r - q); i++){
+            A2[i] = array[i + q + 1];
+        }
+
+        int countIteration = r - p + 1;
+
+        int[] buffer = new int[countIteration];
+
+        int index1 = 0;
+        int index2 = 0;
+        for(int indexArrayMerge = 0; indexArrayMerge < countIteration; indexArrayMerge++){
+            if(index1 <= A1.length && (index2 >= A2.length || A1[index1] < A2[index2])){
+                buffer[indexArrayMerge] = A1[index1];
+                index1++;
+            }else{
+                buffer[indexArrayMerge] = A2[index2];
+                index2++;
+            }
+        }
+
+        return buffer;
+    }
